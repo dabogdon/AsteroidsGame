@@ -106,11 +106,11 @@ class Spaceship extends Floater {
     translate(-1*(float)myCenterX, -1*(float)myCenterY);
   }
   public void centerFleet() {
-    astro[0].setPos(360, 360);
-    astro[1].setPos(410, 360);
-    astro[2].setPos(310, 360);
-    astro[3].setPos(360, 410);
-    astro[4].setPos(360, 310);
+    astro[0].setPos(myCenterX, myCenterY);
+    astro[1].setPos(myCenterX+50, myCenterY);
+    astro[2].setPos(myCenterX-50, myCenterY);
+    astro[3].setPos(myCenterX, myCenterY+50);
+    astro[4].setPos(myCenterX, myCenterY-50);
   }
   public double getX() {
     return myCenterX;
@@ -124,7 +124,7 @@ class Spaceship extends Floater {
   public void setY(int n) {
     myCenterY=n;
   }
-  public void setPos(int n, int a) {
+  public void setPos(double n, double a) {
     myCenterX=n;
     myCenterY=a;
   }
