@@ -1,11 +1,13 @@
 Star[] bob = new Star[200];
 Spaceship[] astro = new Spaceship[5];
+
 boolean accelerating = false;
 boolean left = false;
 boolean right = false;
 boolean hyperspace = false;
 boolean jumping = false;
 int countDown = 0;
+
 public void setup() {
   size(720, 720);
   background(0);
@@ -53,6 +55,7 @@ public void draw() {
         for (int z=0; z<astro.length; z++) {
           astro[z].setXSpeed(0);
           astro[z].setYSpeed(0);
+          astro[0].setPos(Math.random()*720,Math.random()*720);
           astro[0].centerFleet();
           astro[z].setDirection(direction);
         }
