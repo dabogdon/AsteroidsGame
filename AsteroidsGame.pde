@@ -29,10 +29,12 @@ public void setup() {
 
 public void draw() {
   background(0);
+  /*
   //framerate
   textSize(20);
   fill(255);
-  text((int)(frameRate), 5, 23);  
+  text((int)(frameRate), 5, 23); 
+  */
   for (int i=0; i<bob.length; i++) {//stars
     bob[i].show();
   }
