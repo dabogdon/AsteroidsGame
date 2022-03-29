@@ -1,12 +1,15 @@
 class Asteroid extends Floater {
   private double rotSpeed;
-  private int asteroidConstant;
+  private int asteroidConstant, myType, myExplosionSize;
+  private boolean myExplosionGrow, exploding;
   public Asteroid() {
     rotSpeed=(Math.random()*5)-3;
     asteroidConstant=(int)(Math.random()*15)+5;
     myCenterX=myCenterY=(Math.random()*721)-360;
     myPointDirection=Math.random()*360;
-
+    myExplosionSize=1;
+    myExplosionGrow=true;
+    exploding=false;
     myColor=255;
     if (Math.random() < 0.5) {
       corners = 10;
@@ -22,27 +25,48 @@ class Asteroid extends Floater {
       yCorners = yPoint;
     }
   }
-  public void move ()   //move the floater in the current direction of travel
-  {      
-    myPointDirection+=rotSpeed;
+  public void destroy() {
+    fill(255, 0, 0);
+    noStroke();
+    ellipse((float)myCenterX, (float)myCenterY, myExplosionSize, myExplosionSize);
+    if (myExplosionSize<=100&&myExplosionGrow==true) {
+      myExplosionSize+=10;
+    } else if (myExplosionSize>=5) {
+      myExplosionGrow=false;
+      myExplosionSize-=5;
+    }
+    if (myExplosionSize<=1) {
+      exploding=false;
+      asteroids.remove(this);
+    }
+  }
+  public void move () {//move the floater in the current direction of travel    
     //change the x and y coordinates by myXspeed and myYspeed       
     myCenterX += myXspeed;    
-    myCenterY += myYspeed;     
-
+    myCenterY += myYspeed; 
+    myPointDirection+=rotSpeed;
     //wrap around screen    
-    if (myCenterX >width)
-    {     
+    if (myCenterX > width) {
       myCenterX = 0;
-    } else if (myCenterX<0)
-    {     
+    } else if (myCenterX<0) {
       myCenterX = width;
     }    
-    if (myCenterY >height)
-    {    
+    if (myCenterY >height) {
       myCenterY = 0;
-    } else if (myCenterY < 0)
-    {     
+    } else if (myCenterY < 0) {
       myCenterY = height;
+    }
+  }   
+  public void dropItem() {
+    if (myType==1) {
+      myType+=(int)(Math.random()*3);
+    }
+    if (myType==1) {
+      countDeathRay++;
+    } else if (myType==2) {
+      countQuantumFuel++;
+    } else if (myType==3) {
+      countRepairKit++;
     }
   }
   public void setPos(int x, int y) {
@@ -54,5 +78,21 @@ class Asteroid extends Floater {
   }
   public double getY() {
     return myCenterY;
+  }
+  public void setType(double a) {//set asteroid type for powerup drop
+    if (a>0.94) {
+      myType=1;
+    } else {
+      myType=0;
+    }
+  }
+  public int getType() {
+    return myType;
+  }
+  public boolean getExploding() {
+    return exploding;
+  }
+  public void explode() {
+    exploding=true;
   }
 }
