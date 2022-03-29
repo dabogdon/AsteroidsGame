@@ -177,7 +177,7 @@ public void spawnAsteroids() {
   }
 }
 public void addstroids() {
-  if (Math.random()>0.96) {
+  if (Math.random()>0.98) {
     Asteroid joe = new Asteroid();
     asteroids.add(joe);
     asteroids.get(asteroids.size()-1).accelerate(Math.random()*2);
