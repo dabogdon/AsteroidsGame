@@ -85,7 +85,7 @@ public void draw() {
     }
   }
   if (hyperspace==true&&countDown==180) {//jump to hyperspace
-    astro.accelerate(5);
+    astro.accelerate(3);
     jumping = true;
     if (astro.getX()>=width-20||astro.getX()<=20||astro.getY()>=620||astro.getY()<=10) {//end hyperspace when spaceship leaves screen
       jumping = false;
