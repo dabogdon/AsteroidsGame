@@ -24,7 +24,7 @@ float health=100;
 //powerups
 int countRepairKit=0;
 int countQuantumFuel=0;
-int countDeathRay=2;
+int countDeathRay=0;
 int rayTimer=0;
 public void setup() {
   size(720, 720);
@@ -39,9 +39,6 @@ public void setup() {
     asteroids.get(i).setPos((int)(Math.random()*721)-360, (int)(Math.random()*721)-360);
     asteroids.get(i).setType(Math.random());
   }
-  Bullet joel = new Bullet("null");
-  shots.add(joel);
-  shots.get(0).setPos(-100, -100);
 }
 public void draw() {
   background(0);
