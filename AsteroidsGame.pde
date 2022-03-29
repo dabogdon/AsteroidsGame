@@ -24,7 +24,7 @@ float health=100;
 //powerups
 int countRepairKit=0;
 int countQuantumFuel=0;
-int countDeathRay=0;
+int countDeathRay=2;
 int rayTimer=0;
 public void setup() {
   size(720, 720);
