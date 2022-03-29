@@ -29,13 +29,13 @@ class Asteroid extends Floater {
     fill(255, 0, 0);
     noStroke();
     ellipse((float)myCenterX, (float)myCenterY, myExplosionSize, myExplosionSize);
-    if (myExplosionSize<=100&&myExplosionGrow==true) {
-      myExplosionSize+=10;
-    } else if (myExplosionSize>=5) {
+    if (myExplosionSize<=50&&myExplosionGrow==true) {
+      myExplosionSize+=15;
+    } else if (myExplosionSize>=10) {
       myExplosionGrow=false;
-      myExplosionSize-=5;
+      myExplosionSize-=10;
     }
-    if (myExplosionSize<=1) {
+    if (myExplosionSize<=6) {
       exploding=false;
       asteroids.remove(this);
     }
