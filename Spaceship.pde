@@ -14,10 +14,9 @@ class Spaceship extends Floater {
     myColor = color(255, 255, 255);
     myCenterX = myCenterY = 360;
     myXspeed = myYspeed = 0; 
-    myPointDirection = 0;
+    myPointDirection = 18;
   }
-  public void show ()  //Draws the floater at the current position  
-  {             
+  public void show () { //Draws the floater at the current position               
     translate((float)myCenterX, (float)myCenterY);  
     float dRadians = (float)(myPointDirection*(Math.PI/180));
     rotate(dRadians);
@@ -53,19 +52,45 @@ class Spaceship extends Floater {
     }
     endShape(CLOSE);
 
-    if (accelerating==true) {
+    if (accelerating==true && hyperspace==false) {
       line(-12, -4, -20, -6);
       line(-12, 0, -20, 0);
       line(-12, 4, -20, 6);
     }
+
     rotate(-1*dRadians);
     translate(-1*(float)myCenterX, -1*(float)myCenterY);
+    if (!hyperspace) {
+      stroke(255, 255, 255, 100);
+      strokeWeight(3);
+      line((float)myCenterX, (float)myCenterY, (float)(myCenterX+(15*myXspeed)), (float)(myCenterY+(15*myYspeed)));
+    }
   }
+  public void destroy() {
+    fill(255, 255, 255);
+    ellipse((float)myCenterX, (float)myCenterY, explosionSize, explosionSize);
+    if (explosionSize<=100&&explosionGrow==true) {
+      explosionSize+=10;
+    } else if (explosionSize>=5) {
+      explosionGrow=false;
+      explosionSize-=5;
+    }
+  }
+
   public double getX() {
     return myCenterX;
   }
   public double getY() {
     return myCenterY;
+  }
+  public double getXspeed() {
+    return myXspeed;
+  }
+  public double getYspeed() {
+    return myYspeed;
+  }
+  public double getDirection() {
+    return myPointDirection;
   }
   public void setX(int n) {
     myCenterX=n;
@@ -81,5 +106,9 @@ class Spaceship extends Floater {
   }
   public void setDirection(double n) {
     myPointDirection=n;
+  }
+  public void setPos(int x, int y) {
+    myCenterX=x;
+    myCenterY=y;
   }
 }
