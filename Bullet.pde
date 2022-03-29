@@ -14,21 +14,19 @@ class Bullet extends Floater {
     line((float)myCenterX, (float)myCenterY, (float)(myCenterX+(2*myXspeed)), (float)(myCenterY+(2*myYspeed)));
   }
   public void move () {   //move the floater in the current direction of travel   
-    if (stationary==false) {
-      //change the x and y coordinates by myXspeed and myYspeed       
-      myCenterX += myXspeed;    
-      myCenterY += myYspeed;  
-      //remove when offscreen 
-      if (myCenterX > width) {
-        shots.remove(this);
-      } else if (myCenterX<0) {
-        shots.remove(this);
-      }    
-      if (myCenterY > height) {
-        shots.remove(this);
-      } else if (myCenterY < 0) {
-        shots.remove(this);
-      }
+    //change the x and y coordinates by myXspeed and myYspeed       
+    myCenterX += myXspeed;    
+    myCenterY += myYspeed;  
+    //remove when offscreen 
+    if (myCenterX > width) {
+      shots.remove(this);
+    } else if (myCenterX<0) {
+      shots.remove(this);
+    }    
+    if (myCenterY > height) {
+      shots.remove(this);
+    } else if (myCenterY < 0) {
+      shots.remove(this);
     }
   }
   public double getX() {
