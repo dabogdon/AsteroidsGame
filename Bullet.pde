@@ -1,5 +1,4 @@
 class Bullet extends Floater {
-  private boolean stationary;
   public Bullet(Spaceship astro) {
     myCenterX=astro.getX();
     myCenterY=astro.getY();
@@ -8,16 +7,11 @@ class Bullet extends Floater {
     myPointDirection=astro.getDirection();
     this.accelerate(6.0);
   }
-  public Bullet(String n) {
-    stationary=true;
-  }
   public void show() {
-    if (stationary==false) {
-      fill(255, 0, 0);
-      stroke(255, 0, 0);
-      strokeWeight(3);
-      line((float)myCenterX, (float)myCenterY, (float)(myCenterX+(2*myXspeed)), (float)(myCenterY+(2*myYspeed)));
-    }
+    fill(255, 0, 0);
+    stroke(255, 0, 0);
+    strokeWeight(3);
+    line((float)myCenterX, (float)myCenterY, (float)(myCenterX+(2*myXspeed)), (float)(myCenterY+(2*myYspeed)));
   }
   public void move () {   //move the floater in the current direction of travel   
     if (stationary==false) {
