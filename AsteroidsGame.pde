@@ -123,6 +123,9 @@ public void draw() {
       }
     }
   }
+  if (rayTimer==0) {
+    deathRay=false;
+  }
   if (deathRay==true && rayTimer>0) {//deathray powerup
     Bullet j = new Bullet(astro);
     shots.add(j);
@@ -150,9 +153,11 @@ public void keyPressed() {
     countRepairKit--;
   }
   if (keyCode==82 && countDeathRay>0 && deathRay==false) {
-    deathRay=true;
-    rayTimer=1200;
-    countDeathRay--;
+    if (countDeathRay>0) {
+      deathRay=true;
+      rayTimer=1200;
+      countDeathRay--;
+    }
   }
 }
 public void keyReleased() {
@@ -177,7 +182,7 @@ public void spawnAsteroids() {
   }
 }
 public void addstroids() {
-  if (Math.random()>0.98) {
+  if (Math.random()>0.96) {
     Asteroid joe = new Asteroid();
     asteroids.add(joe);
     asteroids.get(asteroids.size()-1).accelerate(Math.random()*2);
