@@ -163,7 +163,7 @@ public void keyReleased() {
   if (keyCode == 68) right = false;
 }
 public void mousePressed() {
-  if (hyperspace==false) {
+  if (hyperspace==false && destroy==false) {
     Bullet j = new Bullet(astro);
     shots.add(j);
   }
