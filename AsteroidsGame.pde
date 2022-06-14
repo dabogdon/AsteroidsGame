@@ -139,17 +139,17 @@ public void keyPressed() {
   if (keyCode == 87) accelerating = true;
   if (keyCode == 65) left = true;
   if (keyCode == 68) right = true;
-  if (keyCode ==72 && countQuantumFuel>0 && hyperspace==false) {
+  if (keyCode ==72 && countQuantumFuel>0 && hyperspace==false && destroy==false) {
     hyperspace=true;
     countQuantumFuel--;
   }
-  if (keyCode==81 && countRepairKit>0 && health<100) {
+  if (keyCode==81 && countRepairKit>0 && health<100 && destroy==false) {
     while (health<100) {
       health++;
     }
     countRepairKit--;
   }
-  if (keyCode==82 && countDeathRay>0 && deathRay==false) {
+  if (keyCode==82 && countDeathRay>0 && deathRay==false && destroy==false) {
     if (countDeathRay>0) {
       deathRay=true;
       rayTimer=1200;
